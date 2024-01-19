@@ -22,10 +22,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
           onChange={(e) => setInput(e.target.value)}
         />
       </div>
-      {navLinks?.map((link) => {
+      {navLinks?.map((link, index) => {
         const isActive = pathname?.startsWith(link?.href);
         return (
           <Link
+            key={index}
             className={isActive ? "font-bold mr-4" : "text-blue-400"}
             href={link?.href}
           >
