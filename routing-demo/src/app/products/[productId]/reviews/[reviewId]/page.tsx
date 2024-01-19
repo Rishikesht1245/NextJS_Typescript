@@ -9,10 +9,10 @@ const page = ({
 }: {
   params: { reviewId: string; productId: string };
 }) => {
-  const random = getRandomInt(2);
-  if (random === 1) {
-    throw new Error("Error loading product review");
-  }
+  // const random = getRandomInt(2);
+  // if (random === 1) {
+  //   throw new Error("Error loading product review");
+  // }
   if (parseInt(params?.reviewId) > 1000) {
     notFound();
   }
