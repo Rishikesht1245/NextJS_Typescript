@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import "./style.css";
 
 const navLinks = [
@@ -9,15 +10,18 @@ const navLinks = [
   { name: "Forgot Password", href: "/forgot-password" },
 ];
 
-export default function ProductDetailsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Template({ children }: { children: React.ReactNode }) {
+  const [input, setInput] = useState("");
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <div>
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+      </div>
       {navLinks?.map((link) => {
         const isActive = pathname?.startsWith(link?.href);
         return (
