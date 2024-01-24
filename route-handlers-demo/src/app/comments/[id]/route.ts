@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { comments } from "../data";
 
 export async function GET(
@@ -6,6 +7,10 @@ export async function GET(
   //destructuring params from context , context will be received based on the folder name [id]
   { params }: { params: { id: string } }
 ) {
+  if (parseInt(params.id) > comments?.length) {
+    //Redirecting to the comments list
+    redirect("/comments");
+  }
   const comment = comments.find((item) => item?.id === parseInt(params?.id))!;
   return Response.json(comment);
 }
